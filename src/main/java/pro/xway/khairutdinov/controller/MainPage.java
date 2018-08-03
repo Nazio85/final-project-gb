@@ -12,4 +12,8 @@ public class MainPage {
     public String index(Model model){
         return "index";
     }
+
+    public static void main(String[] args) {
+        System.out.println("test");
+    }
 }

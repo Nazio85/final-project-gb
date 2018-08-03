@@ -1,25 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
     <title>Khairutdinov - Java Developer</title>
 
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
-    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
+    <!--<link rel="stylesheet"-->
+    <!--href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">-->
+    <!--<link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">-->
+    <!--<link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">-->
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{css/style.css}"/>
 </head>
-<body >
-<div id="app">
-    <h1 th:text="#{welcome} + ' {{ message }}'"></h1>
-    <inp></inp>
-    <btn></btn>
+<body>
+<div id="shadowBack" class="hide"></div>
+<div class="containerLogForm">
+    <div id="loginForm" class="text-center hide">
+        <form class="form-signin" th:action="@{/login}">
+            <h1 class="h3 mb-4 font-weight-normal" th:text="#{login}"></h1>
+            <label for="inputEmail" class="sr-only my-2" th:text="#{login}">Email address</label>
+            <input type="email" name="username" id="inputEmail" class="form-control my-2" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only my-2" th:text="#{password}"></label>
+            <input type="password" name="password" id="inputPassword" class="form-control my-2" th:placeholder="#{password}" required>
+            <button class="btn btn-lg btn-primary btn-block mt-4" type="submit" th:text="#{singIn}"></button>
+            <a href="#" class="regBtn linkForTopMenu mt-2 text-uppercase" th:text="#{register}"></a>
+            <p class="mt-5 mb-3 text-muted">&copy; 2018-2018</p>
+        </form>
+    </div>
 </div>
 
+<div class="containerLogForm">
+    <div id="registrationForm" class="text-center hide">
+        <form class="form-signin">
+            <h1 class="h3 mb-4 font-weight-normal">Регистрация нового пользователя</h1>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-<script src="https://unpkg.com/vue"></script>
-<script src="https://unpkg.com/vue-material@beta"></script>
-<script th:src="@{~/js/index.js}"></script>
+            <label for="inputEmailForRegistration" class="sr-only my-2" th:text="#{login}">Email address</label>
+            <input type="email" name="username" id="inputEmailForRegistration" class="form-control my-2" th:placeholder="#{login}" required autofocus>
+
+            <label for="inputPasswordForRegistration" class="sr-only my-2" th:text="#{password}"></label>
+            <input type="password" name="password" id="inputPasswordForRegistration" class="form-control my-2" th:placeholder="#{password}" required>
+
+            <label for="inputPasswordForRegistration2" class="sr-only my-2" th:text="#{password}"></label>
+            <input type="password" name="password" id="inputPasswordForRegistration2" class="form-control my-2" th:placeholder="#{password}" required>
+
+            <button class="btn btn-lg btn-primary btn-block mt-4" type="submit" th:text="#{register}"></button>
+            <a href="#" class="linkForTopMenu logInBtn text-uppercase mt-2 text-center" th:text="#{singIn}"></a>
+        </form>
+    </div>
+</div>
+
+<div class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" th:src="@{~/img/bgIndex.jpg}" alt="slide" />
+        </div>
+    </div>
+</div>
+
+<div id="topMenu">
+<div id="topMenuBtn">
+    <a class="linkForTopMenu" href="#" th:text="#{home}"></a>
+    <a class="linkForTopMenu" href="#" th:text="#{contacts}"></a>
+</div>
+<div id="topMenuLogin">
+    <a href="#" class="linkForTopMenu logInBtn" th:text="#{singIn}"></a>
+    <a href="#" class="linkForTopMenu regBtn" th:text="#{singUP}" id="singUpBtn"></a>
+</div>
+</div>
+
+<div th:fragment="script">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"></script>
+    <script th:src="@{~/js/myScript.js}" ></script>
+</div>
 </body>
 </html>
